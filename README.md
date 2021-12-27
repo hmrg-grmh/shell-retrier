@@ -171,4 +171,6 @@ mkdir xxx
 
 ## .dl
 
-
+~~~ sh
+wget https:ghproxy.com/https://github.com/hmrg-grmh/shell-retrier/raw/main/rtr_funs.sh
+~~~
