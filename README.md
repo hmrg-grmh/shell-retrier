@@ -41,6 +41,8 @@ get_jmsg_bykey_ service/1153
 
 ### .posix_local
 
+#### .def
+
 增加如下定义：
 
 ~~~~ sh
@@ -57,15 +59,23 @@ retrier_sh ()
 } ;
 ~~~~
 
+#### .use-0
+
 使用例：
 
 ~~~ sh
-(works_xrg_ () { get_jmsg_bykey_ service/1153 ; } && retrier_sh works_xrg_ 2>/dev/null)
+(works_ () { get_jmsg_bykey_ service/1153 ; } && retrier_sh works_ 2>/dev/null)
+# or
+works_ () { get_jmsg_bykey_ service/1153 ; } && (retrier_sh works_) 2>/dev/null
 ~~~
 
 **请注意，这里 被判定若失败则重做的实际是 `works_xrg_` 。从 `retrier_sh` 的定义可以看出，这里并没有为被传入函数设计可传参数的功能——其实这并不难，我只是想要展示一下现在的情况下可以怎么用。🦥**
 
-**还有，一定要有括号……至于为啥，最后有个简单的例子，想试的话试试就知道了。。。🙊**
+**还有，一定要有括号。至少一定让 `retrier_sh works_` 在括号里头。至于为啥，最后有个简单的例子，想试的话试试就知道了。。。🙊**
+
+*（上面的 `2>/dev/null` 可以不写但可能会挺乱的。另外，在结尾符 `&&` 后面紧挨着的回车等于空格，所以可以安心换行。）*
+
+#### .use-1
 
 批量使用（示例并发度为 `2` ）：
 
@@ -93,6 +103,8 @@ APIKEYS
 
 这个办法就是 `declare` ，对于 `bash` 它是内置命令。在 `sh` 里没有这个东西。
 
+#### .def
+
 ~~~~ bash
 retrier ()
 {
@@ -111,6 +123,8 @@ retrier ()
 - `export` 函数被 `declare -f fun_name` 代替
 
 别的则并没什么变化。
+
+#### .uses
 
 使用（批量）：
 
@@ -136,6 +150,8 @@ APIKEYS
 
 ### .x
 
+#### .def
+
 再示例一个可传参函数更便捷地使用的 `retrier` 定义：
 
 ~~~~ bash
@@ -154,6 +170,8 @@ retrier_x ()
     } && rtr 0 "$@" ;
 } ;
 ~~~~
+
+#### .uses
 
 试试看：
 
