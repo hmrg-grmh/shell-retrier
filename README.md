@@ -84,6 +84,7 @@ works () { get_jmsg_bykey_ service/1153 ; } && (retrier_sh works) 2>/dev/null
 ~~~ sh
 export -- someapiurl &&
 export -f -- retrier_sh get_jmsg_bykey_ &&
+
 cat <<'APIKEYS' |
 service/11
 service/12
