@@ -81,7 +81,7 @@ works () { get_jmsg_bykey_ service/1153 ; } && (retrier_sh works) 2>/dev/null
 
 #### .use-1
 
-批量使用（示例并发度为 `2` ）：
+批量使用（示例并发度为 `3` ）：
 
 ~~~ sh
 export -- someapiurl &&
