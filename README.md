@@ -23,6 +23,7 @@ get_jmsg_bykey_ ()
 } ;
 ~~~
 
+
 它的使用是在确保 `$someapiurl` 有意义的情况下，像这样用，来获取对应的 `api_k` 的 Json 格式信息：
 
 ~~~ sh
